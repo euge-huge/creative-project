@@ -138,7 +138,7 @@ export default function Sidebar() {
             <span>Последние задачи</span>
             <a
               className="d-flex align-items-center text-muted"
-              href="/add"
+              href="/tasks"
               aria-label="Добавить новую"
             >
               <svg
