@@ -25,9 +25,9 @@ export const AppNavbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <ul className="navbar-nav px-3">
+        <ul className="navbar-nav">
           <li className="nav-item text-nowrap">
-            <button className="btn btn-danger btn-sm" onClick={exitHandler}>
+            <button className="logout-btn" onClick={exitHandler}>
               Выйти
             </button>
           </li>

@@ -102,6 +102,16 @@ body {
   border-radius: 0;
 }
 
+.navbar .logout-btn {
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 0 15px;
+  font-weight: 500;
+}
+
 .form-control-dark {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.1);
