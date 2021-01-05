@@ -7,10 +7,10 @@ import App from "./App";
 import { Provider } from "react-redux";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Suspense>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  </React.Suspense>,
   document.getElementById("root")
 );
