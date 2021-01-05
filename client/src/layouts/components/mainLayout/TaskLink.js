@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import "../../../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
 
 export const TaskLink = (props) => {
@@ -6,7 +7,7 @@ export const TaskLink = (props) => {
 
     return (
         <li className="nav-item">
-            <a className="nav-link" href={"/task/" + task._id} >
+            <Link className="nav-link" to={"/task/" + task._id}>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -27,7 +28,7 @@ export const TaskLink = (props) => {
                 </svg>
                 {task.title}
                 <i className={task.importance>=70 ? "bi bi-circle-fill float-right text-danger" : (task.importance>=40 && task.importance<70) ? "bi bi-circle-fill float-right text-warning" : "bi bi-circle-fill float-right text-success "}></i>
-            </a>
+            </Link>
         </li>
     );
 }
