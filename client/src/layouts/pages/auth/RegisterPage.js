@@ -122,9 +122,10 @@ export const RegisterPage = () => {
               name="degree"
               onChange={onChangeHandler}
             >
-              <option selected>Выбирете ученую степень</option>
-              <option value="candidate">Кандидат наук</option>
-              <option value="doctor">Доктор наук</option>
+              <option selected>Выберите получаемую степень</option>
+              <option value="bachelor">Бакалавр</option>
+              <option value="master">Магистр</option>
+              <option value="specialist">Специалист</option>
             </select>
           </div>
           <div className="form-group">

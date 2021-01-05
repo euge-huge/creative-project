@@ -8,9 +8,12 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
+  TASKS_CLEAN,
 } from "./types";
 
 import { setError } from "./errorAction";
+import { loadAllTasks } from "./tasksAction";
+import { loadAllTransaction } from "./moneyActions";
 
 export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
@@ -19,6 +22,8 @@ export const loadUser = () => (dispatch, getState) => {
     .get("http://localhost:5000/api/auth/user", tokenConfig(getState))
     .then((res) => {
       dispatch({ type: USER_LOADED, payload: res.data });
+      dispatch(loadAllTasks());
+      dispatch(loadAllTransaction());
     })
     .catch((err) => {
       dispatch(setError(err.response.data.msg, "LOAD_FAIL"));
@@ -31,6 +36,8 @@ export const loginUser = (form) => (dispatch) => {
     .post("http://localhost:5000/api/auth/login", form)
     .then((res) => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      dispatch(loadAllTasks());
+      dispatch(loadAllTransaction());
     })
     .catch((err) => {
       dispatch(setError(err.response.data.msg, "LOGIN_FAIL"));
@@ -53,6 +60,7 @@ export const registerUser = (form) => (dispatch) => {
 export const logoutUser = () => (dispatch) => {
   dispatch(setError("Вы вышли из системы", "LOGOUT_SUCCESS"));
   dispatch({ type: LOGOUT_SUCCESS });
+  dispatch({type: TASKS_CLEAN});
 };
 
 // Собираем токен и создаем конфигурацию для запроса

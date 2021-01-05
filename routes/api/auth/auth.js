@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 
 const auth = require("../../../middleware/checkAuth");
 const User = require("../../../models/User");
-const e = require("express");
 
 // @route POST api/auth
 // @desc Проверяем токен и загружаем информацию о пользователе
@@ -73,12 +72,14 @@ router.post("/register", (req, res) => {
           branch,
           degree,
           password: hash,
+          confirmHash: hash
         });
 
         // Пытаемся сохранить в базу данных и создать токен
         newUser
           .save()
           .then((user) => {
+            console.log(user.confirmHash)
             jwt.sign(
               { id: user._id },
               config.get("jwtSecret"),
@@ -94,7 +95,8 @@ router.post("/register", (req, res) => {
                     email: user.email,
                     degree: user.degree,
                     branch: user.branch,
-                    number: user.number
+                    number: user.number,
+                    confirmHash: user.confirmHash,
                   },
                 });
               }

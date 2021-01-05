@@ -29,6 +29,13 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  confirmed: {
+    type: Boolean,
+    default: false,
+  },
+  confirmHash: {
+    type: String
+  },
   tasks: [{ type: Types.ObjectId, ref: "Link" }],
 });
 
