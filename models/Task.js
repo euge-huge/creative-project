@@ -21,6 +21,10 @@ const taskSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  importance: {
+    type: String,
+    default: "0",
+  },
   owner: {
     type: Types.ObjectId,
     ref: "User",

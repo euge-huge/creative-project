@@ -6,25 +6,29 @@ const Task = require("../../../models/Task");
 // @desc Добавить новую задачу
 // @access Private
 router.post("/add", auth, (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, expiredAt, importance } = req.body;
 
   const newTask = new Task({
     title,
     description,
-    expiredAt: Date.now(),
+    expiredAt: expiredAt,
     owner: req.user.id,
+    importance: importance
   });
 
   newTask
     .save()
     .then((doc) => res.json(doc))
     .catch((err) => res.json({ msg: "ERROR" }));
-  res.json({ msg: description });
 });
 
-// @route GET api/tasks
-// @desc Получить все задачи пользователя
-// @access Private
-router.get("/", auth, (req, res) => {});
+router.get("/", auth, (req, res) => {
+  Task.find({owner: req.user.id}).then((doc)=> res.json(doc)).catch(err => res.json(err))
+});
+
+router.delete("/delete/:id", auth, (req, res) => {
+  Task.findByIdAndDelete(req.params.id).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
+})
+
 
 module.exports = router;
