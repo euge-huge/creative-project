@@ -10,7 +10,7 @@ export const ProfilePage = () => {
           <div className="col-md-4">
             <div className="profile-img">
               <img
-                src="https://snob.ru/i/indoc/6c/rubric_issue_event_986635.jpg"
+                src="https://static10.tgstat.ru/channels/_0/8a/8a75bb2c415b49459a0b01fecf8fe64d.jpg"
                 alt=""
               />
               <div className="file btn btn-lg btn-primary">
@@ -25,10 +25,14 @@ export const ProfilePage = () => {
                 {user.lastName} {user.firstName}
               </h5>
               <h6 className="text-success">
-                {user.degree === "doctor" ? (
-                  <>Доктор наук</>
+                {user.degree === "bachelor" ? (
+                  <>Бакалавр</>
+                ) : user.degree === "master" ? (
+                  <>Магистр</>
+                ) : user.degree === "specialist" ? (
+                  <>Специалист</>
                 ) : (
-                  <>Кандитат наук</>
+                  <>Не указано</>
                 )}
               </h6>
               <ul className="nav nav-tabs" id="myTab" role="tablist">
