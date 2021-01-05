@@ -1,4 +1,4 @@
-import {TASKS_CREATED, TASKS_LOADED, TASKS_LOADING, TASKS_DELETED, TASKS_CLEAN} from '../actions/types'
+import {TASKS_CREATED, TASKS_LOADED, TASKS_LOADING, TASKS_DELETED, TASKS_CLEAN, TASK_UPDATED} from '../actions/types'
 
 const initialState = {
     all: [],
@@ -32,6 +32,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 all: []
+            }
+        case TASK_UPDATED:
+            return {
+                ...state,
+                all: [...state.all.filter(task => task._id !== action.payload._id), action.payload]
             }
         default: 
             return state;

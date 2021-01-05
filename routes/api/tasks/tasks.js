@@ -30,5 +30,18 @@ router.delete("/delete/:id", auth, (req, res) => {
   Task.findByIdAndDelete(req.params.id).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
 })
 
+router.put("/update/:id", auth, (req, res) => {
+  const { title, description, expiredAt, importance } = req.body;
+
+  const newTask = {
+    title,
+    description,
+    expiredAt,
+    importance,
+  };
+
+  Task.findByIdAndUpdate(req.params.id, newTask).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
+})
+
 
 module.exports = router;

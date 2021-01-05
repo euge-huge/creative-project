@@ -3,7 +3,8 @@ import {
     TASKS_LOADING,
     TASKS_LOADED,
     TASKS_CREATED,
-    TASKS_DELETED
+    TASKS_DELETED,
+    TASK_UPDATED
 } from "./types";
 
 export const createTask = (newTask) => (dispatch, getState) => {
@@ -30,7 +31,14 @@ export const deleteTask = (id) => (dispatch, getState) => {
     .then(res => [
       dispatch({type: TASKS_DELETED, payload: res.data})
     ])
-} 
+}
+
+export const updateTask = (newTask) => (dispatch, getState) => {
+  axios.put("http://localhost:5000/api/tasks/update/" + newTask._id, newTask, tokenConfig(getState))
+    .then(res => {
+      dispatch({type: TASK_UPDATED, payload: newTask})
+    })
+}
 
 
 // Собираем токен и создаем конфигурацию для запроса

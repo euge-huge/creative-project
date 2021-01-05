@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { createTask, deleteTask } from "../../actions/tasksAction"
+import { createTask } from "../../actions/tasksAction"
 import 'react-widgets/dist/css/react-widgets.css';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+import { Task } from "../components/tasksPage/Task";
 
 export const TasksPage = () => {
   const dispatch = useDispatch();
@@ -44,10 +45,6 @@ export const TasksPage = () => {
   }
 
   const tasks = useSelector((state) => state.tasks.all);
-
-  const deleteTaskHandler = (id) => {
-    dispatch(deleteTask(id))
-  }
 
   return (
     <div className="page">
@@ -98,26 +95,18 @@ export const TasksPage = () => {
       
       {
         tasks.length !== 0 ? (<table className="table">
-        <thead>
+        <thead align="center">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Загаловок</th>
             <th scope="col">Описание</th>
             <th scope="col">Выполнить до</th>
-            <th scope="col">Удалить</th>
+            <th scope="col">Управление</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody align="center">
           {tasks.map((task, idx) => (
-            <tr key={task._id} className={task.importance >=70 ? "table-danger" : (task.importance>=40 && task.importance<70) ? "table-warning" : "table-success"} >
-              <th scope="row">{idx+1}</th>
-              <td>{task.title}</td>
-              <td>{task.description}</td>
-              <td>{new Date(task.expiredAt).toLocaleString("ru-RU")}</td>
-              <td align="center" ><button type="button" className="close" style={{margin: "0 auto"}} onClick={() => deleteTaskHandler(task._id)} aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button></td>
-            </tr>
+            <Task task={task} idx={idx} key={task._id}/>
           ))}
         </tbody>
       </table>) : (<div className="alert alert-info text-center mt-2" style={{width: "50%", margin: "0 auto"}}>Задач пока нет! Создайте первую в форме выше! =)</div>)

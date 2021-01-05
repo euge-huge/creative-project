@@ -8,6 +8,8 @@ import { MoneyPage } from "./layouts/pages/MoneyPage";
 import { ProfilePage } from "./layouts/pages/ProfilePage";
 import { LoginPage } from "./layouts/pages/auth/LoginPage";
 import { RegisterPage } from "./layouts/pages/auth/RegisterPage";
+import { TaskPage } from "./layouts/pages/subPages/TaskPage";
+import { EditTaskPage } from "./layouts/pages/subPages/EditTaskPage";
 
 export const RotesPage = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -28,6 +30,12 @@ export const RotesPage = ({ isAuthenticated }) => {
           </Route>
           <Route path="/profile" exact>
             <ProfilePage />
+          </Route>
+          <Route path="/task/:id">
+            <TaskPage/>
+          </Route>
+          <Route path="/edit/:id">
+            <EditTaskPage/>
           </Route>
           <Redirect to="/" />
         </Switch>
