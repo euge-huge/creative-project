@@ -102,18 +102,18 @@ export const RegisterPage = () => {
               name="branch"
               onChange={onChangeHandler}
             >
-              <option selected>Выбирете отделение</option>
-              <option value="OAR">
-                Отделение автоматизации и робототехники
-              </option>
-              <option value="OG">Отделение геологии</option>
-              <option value="OEN">Отделение естественных наук</option>
-              <option value="OIY">Отделение иностранных языков</option>
-              <option value="OIT">Отделение информационных технологий</option>
-              <option value="OMI">Отделение математики и информатики</option>
-              <option value="OKD">Отделение контроля и диагностики</option>
-              <option value="OND">Отделение нефтегазового дела</option>
-              <option value="OOD">Отделение общетехнических дисциплин</option>
+              <option selected>Выберите школу</option>
+              <option value="ISPR">ИШПР</option>
+              <option value="ISE">ИШЭ</option>
+              <option value="IYTS">ИЯТШ</option>
+              <option value="ISNKB">ИШНКБ</option>
+              <option value="ISITR">ИШИТР</option>
+              <option value="ISNPT">ИШНПТ</option>
+              <option value="SIP">ШИП</option>
+              <option value="ISHBMT">ИШХБМТ</option>
+              <option value="SBIP">ШБИП</option>
+              <option value="ISFVP">ИШФВП</option>
+
             </select>
           </div>
           <div className="form-group">
