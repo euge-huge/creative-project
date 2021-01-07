@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { request } = require("express");
 const auth = require("../../../middleware/checkAuth");
 const Transaction = require("../../../models/Transaction");
 
@@ -35,6 +34,15 @@ router.get("/", auth, (req, res) => {
 // @access Private
 router.delete("/delete/:id", auth, (req, res) => {
     Transaction.findByIdAndDelete(req.params.id).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
+})
+
+router.delete("/delete-for-user/:id", auth, async (req, res) => {
+    const transaction = await Transaction.findOne({owner: req.params.id});
+    if (transaction !==null ) {
+        await Transaction.deleteMany({owner: req.params.id})
+    } else {
+        res.json({msg: "NOTHING TO DELETE"})
+    }
 })
 
 module.exports = router;

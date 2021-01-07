@@ -43,5 +43,14 @@ router.put("/update/:id", auth, (req, res) => {
   Task.findByIdAndUpdate(req.params.id, newTask).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
 })
 
+router.delete("/delete-for-user/:id", auth, async (req, res) => {
+  const task = await Task.findOne({owner: req.params.id});
+  if (task !==null ) {
+    await Task.deleteMany({owner: req.params.id})
+  } else {
+    res.json({msg: "NOTHING TO DELETE"})
+  }
+})
+
 
 module.exports = router;
