@@ -160,4 +160,31 @@ router.post("/login", (req, res) => {
     .catch((err) => res.status(500).json({ msg: "Что-то пошло не так!" }));
 });
 
+// @route PUT api/auth
+// @desc Изменить данные пользователя
+// @access Private
+router.put("/update/:id", auth, (req, res) => {
+  const { firstName, lastName, email, number, degree, branch } = req.body;
+
+  const toUpdateUser = {
+    firstName,
+    lastName,
+    email,
+    number,
+    degree,
+    branch,
+  };
+
+  User.findByIdAndUpdate(req.params.id, toUpdateUser).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
+})
+
+// @route DELETE api/auth
+// @desc Удалить пользователя
+// @access Private
+router.delete("/delete/:id", auth, (req, res) => {
+
+  User.findByIdAndDelete(req.params.id).then(doc => res.json(doc)).catch(err => res.json({msg: "ERROR"}))
+
+})
+
 module.exports = router;

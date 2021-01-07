@@ -7,6 +7,7 @@ import {
   REGISTER_FAIL,
   LOGOUT_SUCCESS,
   USER_LOADED,
+  USER_INFO_UPDATED,
 } from "../actions/types";
 
 const initialState = {
@@ -61,7 +62,11 @@ export default function (state = initialState, action) {
         isLoading: false,
         user: null,
       };
-
+      case USER_INFO_UPDATED:
+        return {
+          ...state,
+          user: action.payload
+        }
     default:
       return state;
   }

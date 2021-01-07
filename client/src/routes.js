@@ -10,6 +10,7 @@ import { LoginPage } from "./layouts/pages/auth/LoginPage";
 import { RegisterPage } from "./layouts/pages/auth/RegisterPage";
 import { TaskPage } from "./layouts/pages/subPages/TaskPage";
 import { EditTaskPage } from "./layouts/pages/subPages/EditTaskPage";
+import { EditProfilePage } from "./layouts/pages/EditProfilePage";
 
 export const RotesPage = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -36,6 +37,9 @@ export const RotesPage = ({ isAuthenticated }) => {
           </Route>
           <Route path="/edit/:id">
             <EditTaskPage/>
+          </Route>
+          <Route path="/profile/edit">
+            <EditProfilePage/>
           </Route>
           <Redirect to="/" />
         </Switch>
