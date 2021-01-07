@@ -1,4 +1,4 @@
-import { ADD_INCOME, TRANSACTION_LOADED, TRANSACTION_LOADING, ADD_OUTCOME, DELETE_OUTCOME, DELETE_INCOME} from "../actions/types";
+import { ADD_INCOME, TRANSACTION_LOADED, TRANSACTION_LOADING, ADD_OUTCOME, DELETE_OUTCOME, DELETE_INCOME, CLEAR_ALL_TRANSACTION} from "../actions/types";
 
 const initialState = {
     loading: false,
@@ -45,6 +45,13 @@ export default function(state = initialState, action) {
                 ...state,
                 income: state.income.filter(trans => trans._id !== action.payload._id),
                 all: state.all.filter(trans => trans._id !== action.payload._id)
+            }
+        case CLEAR_ALL_TRANSACTION:
+            return {
+                ...state,
+                all: [],
+                income: [],
+                outcome: []
             }
         default:
             return state;
