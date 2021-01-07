@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 
 export const ProfilePage = () => {
@@ -45,63 +46,27 @@ export const ProfilePage = () => {
                     role="tab"
                     aria-controls="home"
                     aria-selected="true"
+                    onClick={(e) => e.preventDefault()}
                   >
                     Информация
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link text-success"
-                    id="profile-tab"
-                    data-toggle="tab"
-                    href="/profile"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                  >
-                    Предметы
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link text-success"
-                    id="profile-tab"
-                    data-toggle="tab"
-                    href="/profile"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                  >
-                    Дополнительно
                   </a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-md-2">
-            <input
-              type="submit"
-              className="profile-edit-btn"
-              name="btnAddMore"
-              value="Ред."
-            />
+            <Link to="/profile/edit">
+              <input
+                type="submit"
+                className="profile-edit-btn"
+                name="btnAddMore"
+                value="Ред."
+              />
+            </Link>
           </div>
         </div>
         <div className="row">
           <div className="col-md-4">
-            <div className="profile-work">
-              <p>Ссылки</p>
-              <a href="/href">Личная страница</a>
-              <br />
-              <a href="/href">ВКонтакте</a>
-              <br />
-              <a href="/href">Электорнная почта</a>
-              <p>Ученые степени</p>
-              <a href="/href">Кандитат физико математических наук 2015г.</a>
-              <br />
-              <a href="/href">Профессор 2020г.</a>
-              <br />
-            </div>
           </div>
           <div className="col-md-8">
             <div className="tab-content profile-tab" id="myTabContent">
@@ -136,7 +101,7 @@ export const ProfilePage = () => {
                   </div>
                   <div className="col-md-6">
                     {user.number !== null ? (
-                      <p>user.number</p>
+                      <p>{user.number}</p>
                     ) : (
                       <p className="text-secondary">не заполнено</p>
                     )}
@@ -147,61 +112,20 @@ export const ProfilePage = () => {
                     <label>Кафедра</label>
                   </div>
                   <div className="col-md-6">
-                    <p>Информационных технологий</p>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="profile"
-                role="tabpanel"
-                aria-labelledby="profile-tab"
-              >
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Experience</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Expert</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Hourly Rate</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>10$/hr</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Total Projects</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>230</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>English Level</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Expert</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Availability</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>6 months</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-12">
-                    <label>Your Bio</label>
-                    <br />
-                    <p>Your detail description</p>
+                    <p>{
+                    user.branch === "ISPR" ? "Инженерная школа природных ресурсов" :
+                    user.branch === "ISE" ? "Инженерная школа энергетики" :
+                    user.branch === "IYTS" ? "Инженерная школа ядерных технологий" :
+                    user.branch === "ISNKB" ? "Инженерная школа неразрушающего контроля и безопасности" :
+                    user.branch === "ISITR" ? "Инженерная школа информационных технологий и робототехники" :
+                    user.branch === "ISNPT" ? "Инженерная школа новых производственных технологий" :
+                    user.branch === "SIP" ? "Школа инженерного предпринимательства" :
+                    user.branch === "ISHBMT" ? "Исследовательская школа химических и биомедицинских технологий" :
+                    user.branch === "SBIP" ? "Школа базовой инженерной подготовки" :
+                    user.branch === "ISFVP" ? "Исследовательская школа физики высокоэнергетических процессов" 
+                    
+                    : "----"
+                    }</p>
                   </div>
                 </div>
               </div>
