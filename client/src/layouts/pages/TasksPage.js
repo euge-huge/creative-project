@@ -34,21 +34,21 @@ export const TasksPage = () => {
 
     if (newTask.title && newTask.description && newTask.expiredAt) {
       dispatch(createTask(newTask))
+
+      setForm({
+        title: "",
+        description: "",
+        importance: 0,
+      });
     }
     
-
-    setForm({
-      title: "",
-      description: "",
-      importance: 0,
-    });
   }
 
   const tasks = useSelector((state) => state.tasks.all);
 
   return (
     <div className="page">
-      <div className={form.importance>=70 ? "card text-center bg-danger text-white" : (form.importance>=40 && form.importance<70) ? "card text-center bg-warning" : "card text-center bg-success "}  style={{margin: "0 70px"}}>
+      <div className="card text-center" style={form.importance>=70 ? {backgroundColor: "#FF9078", margin: "0 70px"} : (form.importance>=40 && form.importance<70) ? {backgroundColor: "#FFDE71", margin: "0 70px"} : {backgroundColor: "#AED170", margin: "0 70px"}} >
         <div className="card-header">
           Создайте новую задачу
         </div>

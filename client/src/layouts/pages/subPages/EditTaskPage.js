@@ -44,7 +44,7 @@ export const EditTaskPage = () => {
         <div className="page">
         <h3 className="text-center">Редактирование задачи</h3>
 
-        <div className={form.importance>=70 ? "card text-center bg-danger text-white" : (form.importance>=40 && form.importance<70) ? "card text-center bg-warning" : "card text-center bg-success "}  style={{margin: "0 70px"}}>
+        <div className="card text-center" style={form.importance>=70 ? {backgroundColor: "#FF9078", margin: "0 70px"} : (form.importance>=40 && form.importance<70) ? {backgroundColor: "#FFDE71", margin: "0 70px"} : {backgroundColor: "#AED170", margin: "0 70px"}} >
             <div className="card-header">
             Отредактируйте задачу
             </div>

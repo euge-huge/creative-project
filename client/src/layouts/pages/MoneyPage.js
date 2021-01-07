@@ -45,7 +45,10 @@ export const MoneyPage = () => {
       amount: outcomeForm.outcomeAmount
     }
 
-    dispatch(createTransaction(newOutcome));
+    if (newOutcome.title && newOutcome.amount) {
+      dispatch(createTransaction(newOutcome));
+    }
+
   }
 
   const createIncome = (e) => {
@@ -57,7 +60,10 @@ export const MoneyPage = () => {
       amount: incomeForm.incomeAmount
     }
 
-    dispatch(createTransaction(newIncome));
+    if (newIncome.title && newIncome.amount) {
+      dispatch(createTransaction(newIncome));
+    }
+
   }
 
   return (

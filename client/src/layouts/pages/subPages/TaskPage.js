@@ -18,13 +18,13 @@ export const TaskPage = (props) => {
         height: "100%",
         minHeight: "90vh"
         }}>
-        <div className={task.importance>=70 ? "card text-center bg-danger text-white" : (task.importance>=40 && task.importance<70) ? "card text-center bg-warning" : "card text-center bg-success "} style={{width: "70%", margin: "auto auto", padding: "20px 20px"}} >
+      <div className="card text-center" style={task.importance>=70 ? {backgroundColor: "#FF9078", margin: "0 auto", padding: "25px 25px", width: "60%"} : (task.importance>=40 && task.importance<70) ? {backgroundColor: "#FFDE71", margin: "0 auto", padding: "25px 25px", width: "60%"} : {backgroundColor: "#AED170", margin: "0 auto", padding: "25px 25px", width: "60%"}} >
             <div className="card-body">
                 <h4>{task.title}</h4>
                 <p>{task.description}</p>
                 <div className="btn-group" role="group">
-                    <button type="button" className="btn btn-secondary" onClick={() => history.push("/edit/" + task._id)}>Редактировать</button>
-                    <button type="button" className="btn btn-secondary" onClick={() => {dispatch(deleteTask(task._id)); history.push("/")}}>Удалить</button>
+                    <button type="button" className="btn btn-info" onClick={() => history.push("/edit/" + task._id)}>Редактировать</button>
+                    <button type="button" className="btn btn-danger" onClick={() => {dispatch(deleteTask(task._id)); history.push("/")}}>Удалить</button>
                 </div>
             </div>
         </div>
