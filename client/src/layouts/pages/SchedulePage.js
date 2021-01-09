@@ -84,8 +84,9 @@ export const SchedulePage = () => {
               <select className="custom-select" id="typeOfLesson" onChange={onChangeHandler} name="typeOfLesson" value={form.typeOfLesson}>
                 <option defaultValue>Тип...</option>
                 <option value="lk" style={{backgroundColor: "#C5CBE3", color: "#333"}}>Лекция</option>
-                <option value="pr" style={{backgroundColor: "#374785", color: "#fff"}}>Практика</option>
-                <option value="lb" style={{backgroundColor: "#61892F", color: "#fff"}}>Лабораторная работа</option>
+                <option value="pr" style={{backgroundColor: "#CDAAFF", color: "#333"}}>Практика</option>
+                <option value="lb" style={{backgroundColor: "#DAF7A6", color: "#333"}}>Лабораторная работа</option>
+                <option value="other" style={{backgroundColor: "#FF937C", color: "#333"}}>Другое</option>
               </select>
             </div>
 
